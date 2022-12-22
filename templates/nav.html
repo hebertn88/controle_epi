@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand" href="#">Controle de EPI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Início</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Item 1</a></li>
+                            <li><a class="dropdown-item" href="#">Item 2</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <a class="btn btn-primary ms-auto" href="{% url 'login' %}" role="button">Entrar</a>
+            {% endif %}
+
+
+        </div>
+    </div>
+</nav>
